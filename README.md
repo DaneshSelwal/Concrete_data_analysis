@@ -1,58 +1,77 @@
-# Concrete_data_analysis
-**This repository aims to use different machine learning algorithms, optimization techniques, and visualization to make the most reliable predictions on concrete data and analyze it.**
+# Concrete Data Analysis
 
+## 📌 Overview
+This repository focuses on **Concrete Strength Prediction** and analysis using various machine learning algorithms, optimization techniques, and uncertainty quantification methods. The goal is to derive reliable insights and build robust models to predict the compressive strength of concrete based on its composition.
 
+The project explores:
+* **Hyperparameter Tuning:** Advanced optimization using Optuna, Grid Search, and Bayesian Optimization.
+* **Model Explainability:** Understanding feature importance with SHAP and LIME.
+* **Uncertainty Analysis:** Quantifying prediction confidence using Conformal Prediction, Quantile Regression, and Probabilistic Distributions.
 
-This repository contains various components for concrete data analysis using machine learning. The **DATA** folder holds the dataset used for training and evaluation. Hyperparameter tuning is performed using **OPTUNA** to optimize the model's performance. Additionally, the Probabilistic approach is explored to enhance predictivity accuracy. The project aims to apply different machine learning algorithm techniques to derive meaningful insights from the data.
+## 📂 Repository Structure & Navigation
 
-* **Hyperparameter Tuning**
+### 1. Data
+The dataset used for training and evaluation.
+* **Location:** [`Data/`](Data/)
+* **Files:**
+    * [`train.csv`](Data/train.csv): Training dataset containing concrete mix features.
+    * [`test.csv`](Data/test.csv): Test dataset for model evaluation.
+* **Features:**
+    * `C`: Cement
+    * `mp`: Mineral Admixtures / Slag
+    * `FA`: Fine Aggregate
+    * `CA`: Coarse Aggregate
+    * `F`: Fly Ash / Filler
+    * `W_P`: Water-Powder Ratio
+    * `Adm`: Admixture (Superplasticizer)
+    * `str`: Compressive Strength (Target Variable)
 
-[Hyperparameter_tuning.ipynb](Hyperparameter_Tuning/Hyperparameter_tuning.ipynb): In this, we are using several optimisation techniques like RandomGrid, Grid SearchCv, Bayesian optimisation, and several optuna-based 
-                                                                                 optimisation to get the best model for our data and storing the output from the best model in each optimisation technique in corresponding 
-                                                                                  Excel files.
-                                                                                                                     
-                                                                                                                     
-* **Hyperparameter Tuning using OPTUNA**
+### 2. Hyperparameter Tuning
+Optimizing model performance using various search strategies to find the best configuration for algorithms like XGBoost, LightGBM, CatBoost, and Random Forest.
 
-[Hyperparameter_tuning_Optuna_1.ipynb](Optuna_1/Hyperparameter_tuning_Optuna_1.ipynb): In this, we use different samplers and  prunners present in optuna so that we can have the best result in output for each machine 
-                                                                                       learning algorithm  and save the results in the corresponding Excel file.
-                                                                                                                                                                  
-[Hyperparameter_tuning_Optuna_2.ipynb](Optuna_2/Hyperparameter_tuning_Optuna_2.ipynb): 
+#### General Optimization
+* **Notebook:** [`Hyperparameter_tuning.ipynb`](Hyperparameter_Tuning/Hyperparameter_tuning.ipynb)
+* **Description:** Implements **Random Grid**, **GridSearchCV**, **Bayesian Optimization**, and **Hyperband**. Results (best models) are saved in the `output/` folder.
 
+#### Advanced Optuna Optimization
+Deep dive into Optuna samplers and pruners for efficient tuning.
+* **Optuna Study 1:** [`Hyperparameter_tuning_Optuna_1.ipynb`](Hyperparameter%20tuning%20using%20Optuna/Optuna_1/Hyperparameter_tuning_Optuna_1.ipynb)
+    * Focuses on testing different Optuna samplers and pruners.
+* **Optuna Study 2:** [`Hyperparameter_tuning_Optuna_2.ipynb`](Hyperparameter%20tuning%20using%20Optuna/Optuna_2/Hyperparameter_tuning_Optuna_2.ipynb)
+    * Extended optimization and comparison of results.
+* **Autosampler:** [`Optuna_autosampler.ipynb`](Hyperparameter%20tuning%20using%20Optuna/Optuna_autosampler/Optuna_autosampler.ipynb)
+    * Analysis of Optuna's autosampler capabilities.
+* **PGBM Tuning:** [`PGBM.ipynb`](Hyperparameter%20tuning%20using%20Optuna/Optuna_PGBM/PGBM.ipynb)
+    * Specific tuning for Probabilistic Gradient Boosting Machines.
 
-* **Model Explanations**
+### 3. Model Explanations
+Interpreting the "Black Box" models to understand which features drive predictions.
+* **Notebook:** [`Model_explainations.ipynb`](Model_Explainations/Model_explainations.ipynb)
+* **Techniques:**
+    * **SHAP (SHapley Additive exPlanations):** Global and local feature importance.
+    * **LIME (Local Interpretable Model-agnostic Explanations):** Individual prediction explanation.
 
- [Model_explanations_ipynb](Model_Explanations/Model_explanations_ipynb): In this, we have used lime and shap to explain the importance of each feature in determining the resulting outcome of different machine 
-                                                                          learning models and explained the consequent output in an interactive visual representation.
+### 4. Uncertainty Analysis
+Moving beyond point predictions to estimate the reliability and coverage of the models.
 
+#### Probabilistic Distributions
+* **Notebook:** [`Probabilistic__Distribution.ipynb`](Uncertainity_Analysis/Probabilistic%20_Distribution%20(IBUG)/Probabilistic__Distribution.ipynb)
+* **Description:** Applies probabilistic distributions over **NGBoost** (Natural Gradient Boosting) and **PGBM** to achieve statistical coverage (aiming for ~95% confidence intervals).
 
+#### Conformal Predictions
+* **Notebook:** [`Conformal_Predictions(MAPIE,PUNCC).ipynb`](Uncertainity_Analysis/Conformal_Predictions/Conformal_Predictions(MAPIE,PUNCC).ipynb)
+* **Description:** Uses **MAPIE** and **PUNCC** libraries to implement conformal prediction, ensuring that the ground truth lies within the predicted interval with a high probability (approx. 90%).
 
- * **Probability Distribution**
+#### Quantile Regression
+* **Notebook:** [`Quantile_Regression.ipynb`](Uncertainity_Analysis/Quantile_Regression/Quantile_Regression.ipynb)
+* **Description:** Implements quantile regression to predict conditional quantiles (e.g., 5th and 95th percentiles) for interval estimation.
 
- [Probabilistic_Distributions.ipynb](Probabilistic_Distribution/Probabilistic_Distributions.ipynb): In this, we have applied probabilistic distribution over NGB 
-                                                                                                   regressor and the Probabilistic Gradient Boosting model to 
-                                                                                                   give a coverage of 95% using mean and standard deviation, and 
-                                                                                                   the output result is stored in the corresponding Excel file.
+---
 
+## 🚀 Getting Started
 
- * **Uncertainty Analysis**
+### Prerequisites
+To run the notebooks in this repository, you will need the following Python libraries:
 
- [Uncertainity_analysis_1.ipynb](Uncertainity_Analysis/Uncertainity_analysis_1.ipynb):  In this, we have applied uncertainty analysis to the autosampler in optuna with various prunner to get the best output for 
-                                                                                        different models and hypertuned them for best parameters, after that, we have tried to increae the  coverage interval  by using 
-                                                                                        conformal prediction, weighted average, puncc,  and mapie to increase the  Reliability of our output data on different machine 
-                                                                                        learning models and  making coverage value of nearly 90% interval, and the output for different data are displayed on the 
-                                                                                        corresponding model Excel inside [output](Analysis_1/output).
-                                                                                        .
-                                                                                       
-
-
- [Uncertainity_analysis_2.ipynb](Uncertainity_Analysis/Uncertainity_analysis_2.ipynb): In this, we have further extended the concept of 
-                                                                                       [Uncertainity_analysis_1.ipynb](Uncertainity_Analysis/Uncertainity_analysis_1.ipynb)                                   to machine learning algorithms of **HistGradient Boosting** and **PGBM** 
-                                                                                        model and corresponding outputs are stored in an Excel file in 
-                                                                                        [output](Analysis_2/output).
- 
-
-
-                                                                                                         
-
-
+```bash
+pip install pandas numpy scikit-learn matplotlib seaborn optuna shap lime ngboost pgbm mapie puncc xgboost lightgbm catboost

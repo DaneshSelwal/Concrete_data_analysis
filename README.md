@@ -18,7 +18,6 @@ A comprehensive machine learning repository dedicated to predicting the **Compre
     - [Phase 1: Hyperparameter Tuning](#phase-1-hyperparameter-tuning)
     - [Phase 2: Model Explainability](#phase-2-model-explainability)
     - [Phase 3: Uncertainty Analysis](#phase-3-uncertainty-analysis)
-5. [🚀 Installation & Usage](#-installation--usage)
 
 ---
 

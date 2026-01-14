@@ -110,4 +110,5 @@ We acknowledge that no model is perfect.
 - **Method A (Conformal)**: We generate a prediction interval `[Lower, Upper]`. If the interval is too wide, the model is uncertain about that specific concrete mix.
 - **Method B (Probabilistic)**: We model the output as a Normal distribution $\mathcal{N}(\mu, \sigma)$. A high $\sigma$ indicates high uncertainty (aleatoric uncertainty).
 
+This repository is a collaborative project developed by Danesh Selwal and Prakriti Bisht.
 ---
